@@ -1,0 +1,28 @@
+ALL_VALID: no
+
+DESCRIPTION_KEYWORDS_I:
+- privilege escalation
+- escalation
+- privesc
+- high integrity
+- " sudo "
+- " suid "
+- " pe "
+- " UAC "
+- User Account Control
+- linpeas
+- winpeas
+- escape
+- a
+
+DESCRIPTION_KEYWORDS:
+- ThisIsACaseSensitiveExample
+
+PRODUCT_KEYWORDS_I:
+- sudo
+- docker
+- kubernetes
+
+PRODUCT_KEYWORDS:
+- ThisIsACaseSensitiveExample
+

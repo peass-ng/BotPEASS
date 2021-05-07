@@ -1,0 +1,44 @@
+name: peass_bot_action
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+
+      - name: Setup Python
+        uses: actions/setup-python@v2.2.2
+
+      - name: Setup Dependencies
+        run: python3 -m pip install -r requirements.txt
+
+      - name: Run CVEs Monitor
+        run: python3 peass_bot.py
+        shell: bash
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          VULNERS_API_KEY: ${{ secrets.VULNERS_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Create local changes
+        run: git add scripts/cves_monitor_bot/output/cves_monitor_bot.json
+
+      - name: Commit results to Github
+        run: |
+            git config --local user.email ""
+            git config --global user.name "actions-continuous-monitoring"
+            git commit -m "PD-Actions report" -a --allow-empty
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+           branch: ${{ github.ref }}
+
