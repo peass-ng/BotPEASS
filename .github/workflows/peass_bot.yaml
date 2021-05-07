@@ -28,13 +28,13 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
       - name: Create local changes
-        run: git add scripts/cves_monitor_bot/output/cves_monitor_bot.json
+        run: git add output/peass_bot.json
 
       - name: Commit results to Github
         run: |
             git config --local user.email ""
-            git config --global user.name "actions-continuous-monitoring"
-            git commit -m "PD-Actions report" -a --allow-empty
+            git config --global user.name "PEAS_Bot"
+            git commit -m "Bot auto update" -a --allow-empty
 
       - name: Push changes
         uses: ad-m/github-push-action@master
