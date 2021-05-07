@@ -194,7 +194,7 @@ def generate_new_cve_message(cve_data: dict) -> str:
     
     message += "\n🟢 ℹ️ *More information* (_limit to 5_)\n" + "\n".join(cve_data["references"][:5])
 
-    message += "\n\n(Bot info in: https://github.com/carlospolop/PEASS_Bot)"
+    message += "\n\n(Bot info in: https://github.com/carlospolop/PEASS_Bot)\n"
     
     return message
 
@@ -212,7 +212,7 @@ def generate_public_expls_message(public_expls: list) -> str:
     message = ""
 
     if public_expls:
-        message = "😈 *Public Exploits* 😈\n" + "\n".join(public_expls)
+        message = "😈 *Public Exploits* (_limit 20_) 😈\n" + "\n".join(public_expls[:20])
 
     return message
 
