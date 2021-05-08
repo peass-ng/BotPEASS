@@ -8,14 +8,14 @@ Join the telegram group **[peass](https://t.me/peass)** to see the bot in action
 
 ## Configure one for yourself
 
-**Configuring your own PEASS_Bot** that notifies you about the new CVEs containing specific keywords is very easy!
+**Configuring your own BotPEASS** that notifies you about the new CVEs containing specific keywords is very easy!
 
 - Fork this repo
-- Modify the file `config/cves_monitor_bot.yaml` and set your own keywords
+- Modify the file `config/bopteas.yaml` and set your own keywords
 - In the **github secrets** of your forked repo enter the following API keys:
     - **VULNERS_API_KEY**: (Optional) This is used to find publicly available exploits. You can ue a Free API Key.
     - **SLACK_WEBHOOK**: (Optional) Set the slack webhook to send messages to your slack group
     - **TELEGRAM_BOT_TOKEN** and **TELEGRAM_CHAT_ID**: (Optional) Your Telegram bot token and the chat_id to send the messages to
-- Check `.github/wordflows/peass_bot.yaml` and configure the cron (*once per hour by default*)
+- Check `.github/wordflows/bopteas.yaml` and configure the cron (*once per hour by default*)
 
 *Note that the slack and telegram configurations are optional, but if you don't set any of them you won't receive any notifications*

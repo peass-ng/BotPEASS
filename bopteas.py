@@ -11,12 +11,12 @@ from enum import Enum
 
 
 CIRCL_LU_URL = "https://cve.circl.lu/api/query"
-CVES_JSON_PATH = join(pathlib.Path(__file__).parent.absolute(), "output/peass_bot.json")
+CVES_JSON_PATH = join(pathlib.Path(__file__).parent.absolute(), "output/bopteas.json")
 LAST_NEW_CVE = datetime.datetime.now() - datetime.timedelta(days=1)
 LAST_MODIFIED_CVE = datetime.datetime.now() - datetime.timedelta(days=1)
 TIME_FORMAT = "%Y-%m-%dT%H:%M:%S"
 
-KEYWORDS_CONFIG_PATH = join(pathlib.Path(__file__).parent.absolute(), "config/peass_bot.yaml")
+KEYWORDS_CONFIG_PATH = join(pathlib.Path(__file__).parent.absolute(), "config/bopteas.yaml")
 ALL_VALID = False
 DESCRIPTION_KEYWORDS_I = []
 DESCRIPTION_KEYWORDS = []
@@ -194,7 +194,7 @@ def generate_new_cve_message(cve_data: dict) -> str:
     
     message += "\n🟢 ℹ️ *More information* (_limit to 5_)\n" + "\n".join(cve_data["references"][:5])
 
-    message += "\n\n(Bot info in: https://github.com/carlospolop/PEASS_Bot)\n"
+    message += "\n\n(Bot info in: https://github.com/carlospolop/BotPEASS)\n"
     
     return message
 

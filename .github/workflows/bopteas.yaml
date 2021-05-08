@@ -1,4 +1,4 @@
-name: peass_bot_action
+name: bopteas_action
 
 on:
   schedule:
@@ -19,7 +19,7 @@ jobs:
         run: python3 -m pip install -r requirements.txt
 
       - name: Run CVEs Monitor
-        run: python3 peass_bot.py
+        run: python3 bopteas.py
         shell: bash
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -28,12 +28,12 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
       - name: Create local changes
-        run: git add output/peass_bot.json
+        run: git add output/bopteas.json
 
       - name: Commit results to Github
         run: |
             git config --local user.email ""
-            git config --global user.name "PEAS_Bot"
+            git config --global user.name "BotPEASS"
             git commit -m "Bot auto update" -a --allow-empty
 
       - name: Push changes
