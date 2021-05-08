@@ -1,4 +1,4 @@
-# PEASS_Bot
+# BotPEASS
 
 Use this bot to monitor new CVEs containing defined keywords and send alets to Slack or Telegram.
 
