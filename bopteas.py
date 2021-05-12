@@ -183,16 +183,16 @@ def search_exploits(cve: str) -> list:
 def generate_new_cve_message(cve_data: dict) -> str:
     ''' Generate new CVE message for sending to slack '''
 
-    message = f"🚨 *{cve_data['id']}* 🚨\n"
-    message += f"🔮 *CVSS*: {cve_data['cvss']}\n"
-    message += f"📅 *Published*: {cve_data['Published']}\n"
-    message += "📓 *Summary*: " 
+    message = f"🚨  *{cve_data['id']}*  🚨\n"
+    message += f"🔮  *CVSS*: {cve_data['cvss']}\n"
+    message += f"📅  *Published*: {cve_data['Published']}\n"
+    message += "📓  *Summary*: " 
     message += cve_data["summary"] if len(cve_data["summary"]) < 400 else cve_data["summary"][:400] + "..."
     
     if cve_data["vulnerable_configuration"]:
         message += f"\n🔓 *Vulnerable* (_limit to 10_): " + ", ".join(cve_data["vulnerable_configuration"][:10])
     
-    message += "\n🟢 ℹ️ *More information* (_limit to 5_)\n" + "\n".join(cve_data["references"][:5])
+    message += "\n\n🟢 ℹ️  *More information* (_limit to 5_)\n" + "\n".join(cve_data["references"][:5])
 
     message += "\n\n(Bot info in: https://github.com/carlospolop/BotPEASS)\n"
     
@@ -212,7 +212,7 @@ def generate_public_expls_message(public_expls: list) -> str:
     message = ""
 
     if public_expls:
-        message = "😈 *Public Exploits* (_limit 20_) 😈\n" + "\n".join(public_expls[:20])
+        message = "😈  *Public Exploits* (_limit 20_)  😈\n" + "\n".join(public_expls[:20])
 
     return message
 
