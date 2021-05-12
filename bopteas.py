@@ -190,11 +190,11 @@ def generate_new_cve_message(cve_data: dict) -> str:
     message += cve_data["summary"] if len(cve_data["summary"]) < 400 else cve_data["summary"][:400] + "..."
     
     if cve_data["vulnerable_configuration"]:
-        message += f"\n🔓 *Vulnerable* (_limit to 10_): " + ", ".join(cve_data["vulnerable_configuration"][:10])
+        message += f"\n🔓  *Vulnerable* (_limit to 10_): " + ", ".join(cve_data["vulnerable_configuration"][:10])
     
     message += "\n\n🟢 ℹ️  *More information* (_limit to 5_)\n" + "\n".join(cve_data["references"][:5])
 
-    message += "\n\n(Bot info in: https://github.com/carlospolop/BotPEASS)\n"
+    message += "\n\n(Create your CVE monitor in: https://github.com/carlospolop/BotPEASS)\n"
     
     return message
 
