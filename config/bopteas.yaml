@@ -13,7 +13,6 @@ DESCRIPTION_KEYWORDS_I:
 - User Account Control
 - linpeas
 - winpeas
-- escape
 - " sudo "
 - docker
 - kubernetes
