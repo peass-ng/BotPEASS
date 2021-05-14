@@ -5,6 +5,7 @@ DESCRIPTION_KEYWORDS_I:
 - escalation
 - privesc
 - high integrity
+- elevated privilege
 - " sudo "
 - " suid "
 - " pe "
@@ -13,6 +14,11 @@ DESCRIPTION_KEYWORDS_I:
 - linpeas
 - winpeas
 - escape
+- " sudo "
+- docker
+- kubernetes
+- " lxc "
+- podman
 
 DESCRIPTION_KEYWORDS:
 - ThisIsACaseSensitiveExample
@@ -21,6 +27,9 @@ PRODUCT_KEYWORDS_I:
 - sudo
 - docker
 - kubernetes
+- lxc
+- podman
+- container
 
 PRODUCT_KEYWORDS:
 - ThisIsACaseSensitiveExample
