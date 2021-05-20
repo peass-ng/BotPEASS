@@ -6,6 +6,7 @@ DESCRIPTION_KEYWORDS_I:
 - privesc
 - high integrity
 - elevated privilege
+- escalation of privilege
 - " sudo "
 - " suid "
 - " pe "
