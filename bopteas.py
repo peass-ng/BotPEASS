@@ -164,6 +164,9 @@ def is_prod_keyword_present(products: str):
 
 def search_exploits(cve: str) -> list:
     ''' Given a CVE it will search for public exploits to abuse it '''
+    
+    return []
+    #TODO: Find a better way to discover exploits
 
     vulners_api_key = os.getenv('VULNERS_API_KEY')
     
