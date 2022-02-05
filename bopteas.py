@@ -8,6 +8,7 @@ import vulners
 
 from os.path import join
 from enum import Enum
+from discord import Webhook, RequestsWebhookAdapter
 
 
 CIRCL_LU_URL = "https://cve.circl.lu/api/query"
@@ -285,6 +286,26 @@ def send_telegram_message(message: str, public_expls_msg: str):
         if not resp['ok']:
             print("ERROR SENDING TO TELEGRAM: "+ message.split("\n")[0] + resp["description"])
 
+            
+def send_discord_message(message: str, public_expls_msg: str):
+    ''' Send a message to the discord channel webhook '''
+
+    discord_webhok_url = os.getenv('DISCORD_WEBHOOK_URL')
+
+    if not discord_webhok_url:
+        print("DISCORD_WEBHOOK_URL wasn't configured in the secrets!")
+        return
+    
+    if public_expls_msg:
+        message = message + "\n" + public_expls_msg
+
+    message = message.replace(".", "\.").replace("-", "\-").replace("(", "\(").replace(")", "\)").replace("_", "").replace("[","\[").replace("]","\]").replace("{","\{").replace("}","\}").replace("=","\=")
+    webhook = Webhook.from_url(discord_webhok_url, adapter=RequestsWebhookAdapter())
+    if public_expls_msg:
+        if public_expls_msg:
+    
+    webhook.send(message)
+
 #################### MAIN #########################
 
 def main():
@@ -306,6 +327,7 @@ def main():
         public_expls_msg = generate_public_expls_message(public_exploits)
         send_slack_mesage(cve_message, public_expls_msg)
         send_telegram_message(cve_message, public_expls_msg)
+        send_discord_message(cve_message, public_expls_msg)
     
     #Find and publish modified CVEs
     modified_cves = get_modified_cves()
