@@ -26,6 +26,7 @@ jobs:
           VULNERS_API_KEY: ${{ secrets.VULNERS_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
 
       - name: Create local changes
         run: git add output/bopteas.json
