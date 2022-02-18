@@ -197,6 +197,8 @@ def generate_new_cve_message(cve_data: dict) -> str:
         message += f"\n🔓  *Vulnerable* (_limit to 10_): " + ", ".join(cve_data["vulnerable_configuration"][:10])
     
     message += "\n\n🟢 ℹ️  *More information* (_limit to 5_)\n" + "\n".join(cve_data["references"][:5])
+    
+    message += "\n\n---"
 
     #message += "\n\n(Check the bots description for more information about the bot)\n"
     
