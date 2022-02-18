@@ -198,7 +198,7 @@ def generate_new_cve_message(cve_data: dict) -> str:
     
     message += "\n\n🟢 ℹ️  *More information* (_limit to 5_)\n" + "\n".join(cve_data["references"][:5])
 
-    message += "\n\n(Check the bots description for more information about the bot)\n"
+    #message += "\n\n(Check the bots description for more information about the bot)\n"
     
     return message
 
