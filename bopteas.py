@@ -191,7 +191,7 @@ def generate_new_cve_message(cve_data: dict) -> str:
     message += f"🔮  *CVSS*: {cve_data['cvss']}\n"
     message += f"📅  *Published*: {cve_data['Published']}\n"
     message += "📓  *Summary*: " 
-    message += cve_data["summary"] if len(cve_data["summary"]) < 400 else cve_data["summary"][:400] + "..."
+    message += cve_data["summary"] if len(cve_data["summary"]) < 500 else cve_data["summary"][:500] + "..."
     
     if cve_data["vulnerable_configuration"]:
         message += f"\n🔓  *Vulnerable* (_limit to 10_): " + ", ".join(cve_data["vulnerable_configuration"][:10])
