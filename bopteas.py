@@ -301,7 +301,7 @@ def send_discord_message(message: str, public_expls_msg: str):
     if public_expls_msg:
         message = message + "\n" + public_expls_msg
 
-    message = message.replace(".", "\.").replace("(", "\(").replace(")", "\)").replace("_", "").replace("[","\[").replace("]","\]").replace("{","\{").replace("}","\}").replace("=","\=")
+    message = message.replace("(", "\(").replace(")", "\)").replace("_", "").replace("[","\[").replace("]","\]").replace("{","\{").replace("}","\}").replace("=","\=")
     webhook = Webhook.from_url(discord_webhok_url, adapter=RequestsWebhookAdapter())
     if public_expls_msg:
         message = message + "\n" + public_expls_msg
