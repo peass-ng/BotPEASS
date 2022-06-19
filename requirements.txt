@@ -1,4 +1,0 @@
-requests
-pyyaml
-vulners
-discord
