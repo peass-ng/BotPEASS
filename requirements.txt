@@ -1,4 +1,4 @@
 requests
 pyyaml
 vulners
-discord
+discord==1.7.3
