@@ -60,7 +60,7 @@ def load_lasttimes():
             LAST_NEW_CVE = datetime.datetime.strptime(cves_time["LAST_NEW_CVE"], TIME_FORMAT)
             LAST_MODIFIED_CVE = datetime.datetime.strptime(cves_time["LAST_MODIFIED_CVE"], TIME_FORMAT)
 
-    except Excepton as e: #If error, just keep the fault date (today - 1 day)
+    except Exception as e: #If error, just keep the fault date (today - 1 day)
         print(f"ERROR, using default last times.\n{e}")
         pass
 
