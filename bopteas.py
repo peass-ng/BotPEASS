@@ -308,6 +308,30 @@ def send_discord_message(message: str, public_expls_msg: str):
     
     webhook.send(message)
 
+def send_pushover_message(message: str, public_expls_msg: str):
+    ''' Send a message to the pushover device '''
+
+    pushover_device_name = os.getenv('PUSHOVER_DEVICE_NAME')
+    pushover_user_key = os.getenv('PUSHOVER_USER_KEY')
+    pushover_token = os.getenv('PUSHOVER_TOKEN') 
+
+    if not pushover_device_name:
+        print("PUSHOVER_DEVICE_NAME wasn't configured in the secrets!")
+        return 
+    if not pushover_user_key:
+        print("PUSHOVER_USER_KEY wasn't configured in the secrets!")
+        return
+    if not pushover_token:
+        print("PUSHOVER_TOKEN wasn't configured in the secrets!")
+        return
+    if public_expls_msg:
+        message = message + "\n" + public_expls_msg
+
+    data = { "token": pushover_token, "user": pushover_user_key, "message": message , "device": pushover_device_name}
+    try:
+        r = requests.post("https://api.pushover.net/1/messages.json", data = data)
+    except Exception as e:
+        print("ERROR SENDING TO PUSHOVER: "+ message.split("\n")[0] +message)
 #################### MAIN #########################
 
 def main():
@@ -330,6 +354,7 @@ def main():
         send_slack_mesage(cve_message, public_expls_msg)
         send_telegram_message(cve_message, public_expls_msg)
         send_discord_message(cve_message, public_expls_msg)
+        send_pushover_message(cve_message, public_expls_msg)
     
     #Find and publish modified CVEs
     modified_cves = get_modified_cves()
@@ -344,6 +369,7 @@ def main():
         public_expls_msg = generate_public_expls_message(public_exploits)
         send_slack_mesage(cve_message, public_expls_msg)
         send_telegram_message(cve_message, public_expls_msg)
+        send_pushover_message(cve_message, public_expls_msg)
 
     #Update last times
     update_lasttimes()
