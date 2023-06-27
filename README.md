@@ -13,7 +13,7 @@ Join the telegram group **[peass](https://t.me/peass)** to see the bot in action
 **Configuring your own BotPEASS** that notifies you about the new CVEs containing specific keywords is very easy!
 
 - Fork this repo
-- Modify the file `config/bopteas.yaml` and set your own keywords
+- Modify the file `config/botpeas.yaml` and set your own keywords
 - In the **github secrets** of your forked repo enter the following API keys:
     - **VULNERS_API_KEY**: (Optional) This is used to find publicly available exploits. You can use a Free API Key.
     - **SLACK_WEBHOOK**: (Optional) Set the slack webhook to send messages to your slack group
@@ -21,6 +21,6 @@ Join the telegram group **[peass](https://t.me/peass)** to see the bot in action
     - **TELEGRAM_BOT_TOKEN** and **TELEGRAM_CHAT_ID**: (Optional) Your Telegram bot token and the chat_id to send the messages to
     - **PUSHOVER_DEVICE_NAME PUSHOVER_USER_KEY PUSHOVER_TOKEN**: (Optional) Set your key and token to receive pushover notifications.
 
-- Check `.github/wordflows/bopteas.yaml` and configure the cron (*once every 8 hours by default*)
+- Check `.github/wordflows/botpeas.yaml` and configure the cron (*once every 8 hours by default*)
 
 *Note that the slack, telegram, and discord configurations are optional, but if you don't set any of them you won't receive any notifications anywhere*
