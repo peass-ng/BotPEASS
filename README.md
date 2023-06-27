@@ -19,6 +19,8 @@ Join the telegram group **[peass](https://t.me/peass)** to see the bot in action
     - **SLACK_WEBHOOK**: (Optional) Set the slack webhook to send messages to your slack group
     - **DISCORD_WEBHOOK_URL**: (Optional) Set the discord webhook to send messages to your discord channel
     - **TELEGRAM_BOT_TOKEN** and **TELEGRAM_CHAT_ID**: (Optional) Your Telegram bot token and the chat_id to send the messages to
+    - **PUSHOVER_DEVICE_NAME PUSHOVER_USER_KEY PUSHOVER_TOKEN**: (Optional) Set your key and token to receive pushover notifications.
+
 - Check `.github/wordflows/bopteas.yaml` and configure the cron (*once every 8 hours by default*)
 
 *Note that the slack, telegram, and discord configurations are optional, but if you don't set any of them you won't receive any notifications anywhere*
