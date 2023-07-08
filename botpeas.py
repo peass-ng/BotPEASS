@@ -346,15 +346,18 @@ def main():
     
     new_cves_ids = [ncve['id'] for ncve in new_cves]
     print(f"New CVEs discovered: {new_cves_ids}")
-    
-    for new_cve in new_cves:
-        public_exploits = search_exploits(new_cve['id'])
-        cve_message = generate_new_cve_message(new_cve)
-        public_expls_msg = generate_public_expls_message(public_exploits)
-        send_slack_mesage(cve_message, public_expls_msg)
-        send_telegram_message(cve_message, public_expls_msg)
-        send_discord_message(cve_message, public_expls_msg)
-        send_pushover_message(cve_message, public_expls_msg)
+
+    if new_cves == "":
+        send_telegram_message("No new CVEs found.")
+    else:
+        for new_cve in new_cves:
+            public_exploits = search_exploits(new_cve['id'])
+            cve_message = generate_new_cve_message(new_cve)
+            public_expls_msg = generate_public_expls_message(public_exploits)
+            send_slack_mesage(cve_message, public_expls_msg)
+            send_telegram_message(cve_message, public_expls_msg)
+            send_discord_message(cve_message, public_expls_msg)
+            send_pushover_message(cve_message, public_expls_msg)
     
     #Find and publish modified CVEs
     modified_cves = get_modified_cves()
@@ -363,13 +366,16 @@ def main():
     modified_cves_ids = [mcve['id'] for mcve in modified_cves]
     print(f"Modified CVEs discovered: {modified_cves_ids}")
     
-    for modified_cve in modified_cves:
-        public_exploits = search_exploits(modified_cve['id'])
-        cve_message = generate_modified_cve_message(modified_cve)
-        public_expls_msg = generate_public_expls_message(public_exploits)
-        send_slack_mesage(cve_message, public_expls_msg)
-        send_telegram_message(cve_message, public_expls_msg)
-        send_pushover_message(cve_message, public_expls_msg)
+    if modified_cves == "":
+        send_telegram_message("No new modified CVEs found.")
+    else:
+        for modified_cve in modified_cves:
+            public_exploits = search_exploits(modified_cve['id'])
+            cve_message = generate_modified_cve_message(modified_cve)
+            public_expls_msg = generate_public_expls_message(public_exploits)
+            send_slack_mesage(cve_message, public_expls_msg)
+            send_telegram_message(cve_message, public_expls_msg)
+            send_pushover_message(cve_message, public_expls_msg)
 
     #Update last times
     update_lasttimes()
