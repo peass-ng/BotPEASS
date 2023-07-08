@@ -347,7 +347,7 @@ def main():
     new_cves_ids = [ncve['id'] for ncve in new_cves]
     print(f"New CVEs discovered: {new_cves_ids}")
 
-    if new_cves == "":
+    if new_cves != "":
         send_telegram_message(cve_message, public_expls_msg)
 
     for new_cve in new_cves:
@@ -366,7 +366,7 @@ def main():
     modified_cves_ids = [mcve['id'] for mcve in modified_cves]
     print(f"Modified CVEs discovered: {modified_cves_ids}")
 
-    if modified_cves == "":
+    if modified_cves != "":
         send_telegram_message(cve_message, public_expls_msg)
     
     for modified_cve in modified_cves:
