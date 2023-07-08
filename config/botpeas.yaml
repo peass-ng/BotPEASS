@@ -18,6 +18,7 @@ DESCRIPTION_KEYWORDS_I:
 - kubernetes
 - " lxc "
 - podman
+- " wordpress "
 
 DESCRIPTION_KEYWORDS:
 - ThisIsACaseSensitiveExample
@@ -29,6 +30,7 @@ PRODUCT_KEYWORDS_I:
 - lxc
 - podman
 - container
+- wordpress
 
 PRODUCT_KEYWORDS:
 - ThisIsACaseSensitiveExample
