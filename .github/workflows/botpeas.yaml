@@ -2,7 +2,7 @@ name: botpeas_action
 
 on:
   schedule:
-    - cron: '0 */8 * * *'
+    - cron: '30 * * * *'
   workflow_dispatch:
   pull_request:
     branches: [ "main" ]
