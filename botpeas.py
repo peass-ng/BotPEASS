@@ -343,6 +343,8 @@ def main():
 
     #Find a publish new CVEs
     new_cves = get_new_cves()
+
+    send_slack_mesage(cve_message, public_expls_msg)
     
     new_cves_ids = [ncve['id'] for ncve in new_cves]
     print(f"New CVEs discovered: {new_cves_ids}")
