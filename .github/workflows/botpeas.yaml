@@ -10,6 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
@@ -18,7 +20,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 'pypy3.9' 
-
 
       - name: Setup Dependencies
         run: python3 -m pip install -r requirements.txt
