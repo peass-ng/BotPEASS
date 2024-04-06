@@ -6,8 +6,6 @@ on:
   workflow_dispatch:
   pull_request:
     branches: [ "main" ]
-
-permissions: write
   
 jobs:
   build:
