@@ -48,9 +48,9 @@ def load_keywords():
         DESCRIPTION_KEYWORDS = keywords_config["DESCRIPTION_KEYWORDS"]
         PRODUCT_KEYWORDS_I = keywords_config["PRODUCT_KEYWORDS_I"]
         PRODUCT_KEYWORDS = keywords_config["PRODUCT_KEYWORDS"]
-        NTFY_URL = keywords_config.get("NTFY_URL", "")
-        NTFY_TOPIC = keywords_config.get("NTFY_TOPIC", "")
-        NTFY_AUTH = keywords_config.get("NTFY_AUTH", "")
+        #NTFY_URL = keywords_config.get("NTFY_URL", "")
+        #NTFY_TOPIC = keywords_config.get("NTFY_TOPIC", "")
+        #NTFY_AUTH = keywords_config.get("NTFY_AUTH", "")
 
 
 def load_lasttimes():
@@ -341,30 +341,37 @@ def send_pushover_message(message: str, public_expls_msg: str):
 def send_ntfy_message(message: str, public_expls_msg: str):
     ''' Send a message to the ntfy.sh topic '''
 
-    if not NTFY_URL:
-        print("NTFY_URL wasn't configured in the config file!")
+    ntfy_url = os.getenv('NTFY_URL')
+    ntfy_topic = os.getenv('NTFY_TOPIC')
+    ntfy_auth = os.getenv('NTFY_AUTH')
+
+    if not ntfy_url:
+        print("NTFY_URL wasn't configured in the environment variables!")
         return
 
-    if not NTFY_TOPIC:
-        print("NTFY_TOPIC wasn't configured in the config file!")
+    if not ntfy_topic:
+        print("NTFY_TOPIC wasn't configured in the environment variables!")
         return
 
     # Combine message and public exploits message if exists
     if public_expls_msg:
         message = message + "\n" + public_expls_msg
 
-    ntfy_url = f"{NTFY_URL}/{NTFY_TOPIC}"
+    full_ntfy_url = f"{ntfy_url}/{ntfy_topic}"
 
     headers = {
         "Title": "New CVE Alert",
         "Priority": "high",
-        "Authorization": NTFY_AUTH
     }
-    print(ntfy_url)
-    response = requests.post(ntfy_url, data=message.encode('utf-8'), headers=headers)
+
+    if ntfy_auth:
+        headers["Authorization"] = ntfy_auth
+
+    print(full_ntfy_url)
+    response = requests.post(full_ntfy_url, data=message.encode('utf-8'), headers=headers)
 
     if response.status_code == 200:
-        print(f"Notification sent to ntfy.sh topic: {NTFY_TOPIC}")
+        print(f"Notification sent to ntfy.sh topic: {ntfy_topic}")
     else:
         print(f"Failed to send notification to ntfy.sh. Status code: {response.status_code}, Response: {response.text}")
 

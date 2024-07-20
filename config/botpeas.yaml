@@ -36,7 +36,3 @@ PRODUCT_KEYWORDS_I:
 
 PRODUCT_KEYWORDS:
 - ThisIsACaseSensitiveExample
-
-NTFY_URL: "" #ntfy.sh server
-NTFY_TOPIC: "" #Topic
-NTFY_AUTH: "" #Bearer Token
