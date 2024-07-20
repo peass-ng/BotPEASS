@@ -29,7 +29,10 @@ PRODUCT_KEYWORDS_I:
 - lxc
 - podman
 - container
+- linux
+- windows
+- macos
+
 
 PRODUCT_KEYWORDS:
 - ThisIsACaseSensitiveExample
-
