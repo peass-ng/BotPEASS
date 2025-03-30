@@ -31,7 +31,9 @@ PRODUCT_KEYWORDS_I:
 - podman
 - container
 - wordpress
+- linux
+- windows
+- macos
 
 PRODUCT_KEYWORDS:
 - ThisIsACaseSensitiveExample
-

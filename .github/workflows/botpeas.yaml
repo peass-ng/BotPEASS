@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   pull_request:
     branches: [ "main" ]
-
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,6 +30,9 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          NTFY_URL: ${{ secrets.NTFY_URL }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_AUTH: ${{ secrets.NTFY_AUTH }}
 
       - name: Create local changes
         run: git add output/botpeas.json
